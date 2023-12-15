@@ -1,4 +1,4 @@
-#
+# This code will be fixed very soon
 #
 def space_count(str):
      return len(str) - len(str.lstrip())
