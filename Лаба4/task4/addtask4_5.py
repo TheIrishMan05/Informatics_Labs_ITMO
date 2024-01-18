@@ -1,19 +1,30 @@
 import timeit
 
-
-def task_5(file):
-    strings = file.read().split('\n')
-    for i in range(len(strings)):
-        strings[i] = strings[i].replace('    ', '')
-    return strings
+import csv
+import yaml
 
 
-time5 = []
-for k in range(100):
-    with open('C:\study\labs\инфа\Лаба4\Вторник.yml', 'r', encoding="utf-8") as input_f:
-        full_file = task_5(input_f)
-    with open('C:\study\labs\инфа\Лаба4\Вторник.txt', 'w', encoding="utf-8") as output_f:
-        for j in range(len(full_file)):
-            output_f.write(full_file[j] + '\n')
-    time5.append(timeit.timeit())
-print(str((min(time5) + max(time5)) / 2) + ' - addtask 5')
+def task_5(output_f):
+    fields = {
+        "Время": "Время",
+        "Предмет": "Предмет",
+        "Преподаватель": "Преподаватель",
+        "Аудитория": "Аудитория",
+    }
+    with open(output_f, 'w', newline='', encoding="utf-8") as output_file:
+        csv_output = csv.DictWriter(output_file, fieldnames=fields.values())
+        csv_output.writeheader()
+
+        for filename in ['C:\study\labs\инфа\Лаба4\Вторник.yaml']:
+            with open(filename, encoding="utf-8") as input_file:
+                for row_yaml in yaml.safe_load(input_file):
+                    row_csv = {fields[key]: value for key, value in row_yaml.items()}
+                    csv_output.writerow(row_csv)
+    return csv_output
+
+
+time5 = 0
+for i in range(100):
+    task_5(r'Вторник.csv')
+    time5 += timeit.timeit()
+print(str(time5) + ' - addtask5')

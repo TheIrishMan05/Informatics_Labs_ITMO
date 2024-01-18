@@ -36,12 +36,13 @@ def no_lib_parse(f1):
     final += "     }\n    }\n  ]\n}"
     return final
 
-time1 = []
+
+time1 = 0
 for k1 in range(100):
     with open('C:\study\labs\инфа\Лаба4\Вторник.yml', 'r', encoding="utf-8") as inputf:
         a = no_lib_parse(inputf)
     with open('C:\study\labs\инфа\Лаба4\Вторник(итог)(для тестов).json', 'w', encoding="utf-8") as outputf:
         outputf.write(a)
-        time1.append(timeit.timeit())
-print(str((min(time1) + max(time1)) / 2) + ' - maintask')
+        time1 += timeit.timeit()
+print(str(time1) + ' - maintask')
 

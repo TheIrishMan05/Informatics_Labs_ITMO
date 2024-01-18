@@ -21,4 +21,4 @@ def task_5(output_f):
     return csv_output
 
 
-print(task_5(r'Вторник.csv'))
+task_5(r'Вторник.csv')

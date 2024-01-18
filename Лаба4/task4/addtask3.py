@@ -39,7 +39,7 @@ def gr_parser(file_in, file_out, max_space):
 
 time_addtask3 = 0
 for k in range(100):
-    gr_parser(r'invoice.yaml', r'invoice.json', 4)
+    gr_parser(r'../task3/invoice.yaml', r'invoice.json', 4)
     time_addtask3 += timeit.timeit()
 print(str(time_addtask3) + " - addtask3")
 

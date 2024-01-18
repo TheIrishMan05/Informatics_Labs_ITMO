@@ -46,11 +46,11 @@ def regexp_parse(f):
 
 
 double_lessons = int(input())
-time3 = []
+time3 = 0
 for j in range(100):
     with open('C:\study\labs\инфа\Лаба4\Вторник.yml', 'r', encoding="utf-8") as file:
         a = regexp_parse(file)
     with open('C:\study\labs\инфа\Лаба4\Вторник(итог)(для тестов).json', 'w', encoding="utf-8") as output_file:
         output_file.write(a)
-        time3.append(timeit.timeit())
-print(str((min(time3) + max(time3)) / 2)  + ' - addtask2')
+        time3 += timeit.timeit()
+print(str(time3)  + ' - addtask2')
